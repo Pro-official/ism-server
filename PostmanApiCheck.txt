@@ -25,6 +25,35 @@ Response:
 
 *******************************************
 
+
+Login: http://localhost:3001/api/users/login
+Type: POST
+Saves in users table
+
+Requst:
+{
+  "email": "test@promise.com",
+  "password": "lollollollol"
+}
+
+Response: 
+{
+    "message": "Login successful",
+    "user": {
+        "_id": "6767d390bf0125d1ea0c9173",
+        "name": "Promise Ghosh Chowdhury",
+        "email": "test@promise.com",
+        "password": "$2b$08$rZ28LW337kzm30H4W3KWIOTa1RWb6wKMug.5P/.A.KgMhp.7MXKPu",
+        "role": "employee",
+        "createdAt": "2024-12-22T08:53:36.866Z",
+        "updatedAt": "2024-12-22T08:53:36.866Z",
+        "__v": 0
+    }
+}
+
+
+*******************************************
+
 Idea Post: http://localhost:3001/api/ideas
 Type: POST
 Saves in ideas table
