@@ -27,4 +27,32 @@ const loginUser = async (email, password) => {
   }
 };
 
-export default { createUser, loginUser };
+const changeUserRole = async (adminId, userEmailToBeChanged, newRole) => {
+  try {
+    const adminUser = await User.findById(adminId); // Find admin by ID
+
+    if (!adminUser) {
+      throw new Error("Admin user not found");
+    }
+
+    if (adminUser.role !== "admin") {
+      throw new Error("Only admins can change user roles.");
+    }
+
+    const updatedUser = await User.findOneAndUpdate(
+      { email: userEmailToBeChanged },
+      { role: newRole },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedUser) {
+      throw new Error("User not found.");
+    }
+
+    return updatedUser;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export default { createUser, loginUser, changeUserRole };
